@@ -5,6 +5,7 @@ plugins {
 allprojects {
     repositories {
         mavenCentral()
+        mavenLocal()
         jcenter()
         maven {
             name = "GitHubPackages"

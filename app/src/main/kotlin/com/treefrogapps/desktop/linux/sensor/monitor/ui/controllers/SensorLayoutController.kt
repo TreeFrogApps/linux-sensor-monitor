@@ -1,5 +1,6 @@
 package com.treefrogapps.desktop.linux.sensor.monitor.ui.controllers
 
+import com.treefrogapps.desktop.linux.sensor.monitor.repository.UserSettingsRepository
 import com.treefrogapps.javafx.LayoutController
 import javafx.beans.property.SimpleStringProperty
 import javafx.beans.property.StringProperty
@@ -7,16 +8,18 @@ import javafx.fxml.FXML
 import javafx.scene.control.TextField
 import org.apache.logging.log4j.LogManager
 import java.net.URL
+import javax.inject.Inject
 
 class SensorLayoutController : LayoutController() {
 
+    @Inject lateinit var userRepository : UserSettingsRepository
     private val textBinding: StringProperty = SimpleStringProperty("")
 
-    @field:FXML lateinit var textField2: TextField
+    @field:FXML lateinit var textField1: TextField
 
     override fun onInitialized(location: URL?) {
         LogManager.getLogger().error("Mark : onCreate: $location")
-        textField2.textProperty().bind(textBinding)
+        textField1.textProperty().bind(textBinding)
     }
 
     override fun onUpdate(args: Map<String, String>) {

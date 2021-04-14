@@ -1,9 +1,9 @@
 package com.treefrogapps.desktop.linux.sensor.monitor
 
 
-import com.treefrogapps.desktop.linux.sensor.monitor.ui.stage.SensorLayoutStage
-import com.treefrogapps.desktop.linux.sensor.monitor.ui.controllers.SensorLayoutController
 import com.treefrogapps.desktop.linux.sensor.monitor.data.SensorDataFactory
+import com.treefrogapps.desktop.linux.sensor.monitor.ui.controllers.SensorLayoutController
+import com.treefrogapps.desktop.linux.sensor.monitor.ui.stage.SensorLayoutStage
 import com.treefrogapps.javafx.LayoutStageManager
 import com.treefrogapps.javafx.dagger.ApplicationInjector
 import com.treefrogapps.javafx.dagger.DaggerApplication
@@ -18,11 +18,8 @@ import javax.inject.Inject
 
 class SensorMonitorApp : DaggerApplication() {
 
-    @Inject
-    lateinit var schedulers: Rx3Schedulers
-
-    @Inject
-    lateinit var layoutStageManager: LayoutStageManager
+    @Inject lateinit var schedulers: Rx3Schedulers
+    @Inject lateinit var layoutStageManager: LayoutStageManager
 
     override fun start(primaryStage: Stage) {
         super.start(primaryStage)
@@ -30,7 +27,7 @@ class SensorMonitorApp : DaggerApplication() {
         layoutStageManager.launch(
             SensorLayoutStage::class.java,
             SensorLayoutController::class.java,
-            mapOf(Pair("A","1")))
+            mapOf(Pair("A", "1")))
 
         Flowable.interval(2, TimeUnit.SECONDS)
             .flatMap { Flowable.fromCallable { SensorDataFactory().get() } }
@@ -44,7 +41,5 @@ class SensorMonitorApp : DaggerApplication() {
     }
 
     override fun component(): ApplicationInjector<out DaggerApplication> =
-        DaggerSensorMonitorAppComponent.builder()
-            .addApp(this)
-            .build()
+        DaggerSensorMonitorAppComponent.factory().addApp(this)
 }

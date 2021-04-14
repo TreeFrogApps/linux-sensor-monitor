@@ -8,16 +8,15 @@ import javafx.application.Application
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [
-    SensorMonitorAppModule::class,
-    SensorLayoutStageBuilderModule::class
-])
+@Component(
+    modules = [
+        SensorMonitorAppModule::class,
+        SensorLayoutStageBuilderModule::class
+    ])
 interface SensorMonitorAppComponent : ApplicationInjector<SensorMonitorApp> {
 
-    @Component.Builder interface Builder {
+    @Component.Factory interface Factory {
 
-        @BindsInstance fun addApp(app: Application): Builder
-
-        fun build(): SensorMonitorAppComponent
+        fun addApp(@BindsInstance app: Application): ApplicationInjector<SensorMonitorApp>
     }
 }

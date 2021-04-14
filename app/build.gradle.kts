@@ -42,7 +42,7 @@ dependencies {
     // TreeFrogApps Libs
     implementation("com.treefrogapps.kotlin.core:core:1.6.0")
     implementation("com.treefrogapps.rxjava3:rxjava3:1.1.0")
-    implementation("com.treefrogapps.javafx:javafx:1.2.0")
+    implementation("com.treefrogapps.javafx:javafx:1.3.0")
 
     // Dagger
     val daggerVersion = "2.34"
