@@ -1,6 +1,6 @@
 package com.treefrogapps.desktop.linux.sensor.monitor
 
-import com.treefrogapps.desktop.linux.sensor.monitor.ui.stage.SensorLayoutStageBuilderModule
+import com.treefrogapps.desktop.linux.sensor.monitor.ui.stage.SensorLayoutStageModule
 import com.treefrogapps.javafx.dagger.ApplicationInjector
 import dagger.BindsInstance
 import dagger.Component
@@ -11,7 +11,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         SensorMonitorAppModule::class,
-        SensorLayoutStageBuilderModule::class
+        SensorLayoutStageModule::class
     ])
 interface SensorMonitorAppComponent : ApplicationInjector<SensorMonitorApp> {
 
