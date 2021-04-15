@@ -6,20 +6,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox alignment="CENTER" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ProgressBar prefWidth="50.0" progress="0.43" style="-fx-background-color: transparent;">
+      <ProgressBar fx:id="sensorTempPercent" prefWidth="50.0" progress="0.0" style="-fx-background-color: transparent;">
          <padding>
             <Insets bottom="2.0" left="4.0" right="2.0" top="2.0" />
          </padding>
       </ProgressBar>
-      <Label text="38°C" textFill="#ffe182">
+      <Label fx:id="currentTempLabel" text="38°C" textFill="#ffe182">
          <padding>
             <Insets bottom="2.0" left="2.0" right="16.0" top="2.0" />
          </padding>
       </Label>
-      <Label text="Sensor Name" textFill="WHITE">
+      <Label fx:id="sensorNameLabel" text="Sensor Name" textFill="WHITE">
          <padding>
             <Insets bottom="2.0" left="2.0" right="4.0" top="2.0" />
          </padding>
@@ -27,7 +26,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Label text="Device Name" textFill="#dadada">
+      <Label fx:id="deviceNameLabel" text="Device Name" textFill="#dadada">
          <padding>
             <Insets bottom="2.0" left="2.0" right="4.0" top="2.0" />
          </padding>
