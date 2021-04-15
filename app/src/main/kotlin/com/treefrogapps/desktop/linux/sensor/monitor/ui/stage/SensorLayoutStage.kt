@@ -13,5 +13,11 @@ class SensorLayoutStage @Inject constructor(
     schedulers: Rx3Schedulers,
     inflater: LayoutInflater,
     bundle: ResourceBundle)
-    : LayoutStage(controllers, inflater, schedulers, bundle)
+    : LayoutStage(controllers, inflater, schedulers, bundle) {
+
+        init {
+            minWidth = 400.0;
+            minHeight = 230.0;
+        }
+    }
 

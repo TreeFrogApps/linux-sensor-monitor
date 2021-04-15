@@ -13,7 +13,7 @@ import dagger.multibindings.IntoMap
     @Provides
     @IntoMap
     @ControllerKey(value = SensorLayoutController::class)
-    fun inCallLayout(): String = "sensors_main"
+    fun inCallLayout(): String = "sensor_layout"
 
     @Provides
     @IntoMap
