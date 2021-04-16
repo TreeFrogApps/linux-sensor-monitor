@@ -1,7 +1,6 @@
-package com.treefrogapps.desktop.linux.sensor.monitor.ui.controllers
+package com.treefrogapps.desktop.linux.sensor.monitor.ui.controller
 
-import com.treefrogapps.desktop.linux.sensor.monitor.ui.controllers.SensorLayoutBuilderModule.SensorLayoutSubcomponent
-import com.treefrogapps.javafx.LayoutController
+import com.treefrogapps.desktop.linux.sensor.monitor.ui.controller.SensorLayoutBuilderModule.SensorLayoutSubcomponent
 import com.treefrogapps.javafx.dagger.ControllerComponent
 import com.treefrogapps.javafx.dagger.ControllerKey
 import com.treefrogapps.javafx.dagger.DaggerController

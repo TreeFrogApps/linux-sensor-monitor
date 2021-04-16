@@ -6,33 +6,36 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ProgressBar fx:id="sensorTempPercent" prefWidth="50.0" progress="0.0" style="-fx-background-color: transparent;">
-         <padding>
-            <Insets bottom="2.0" left="4.0" right="2.0" top="2.0" />
-         </padding>
-      </ProgressBar>
-      <Label fx:id="currentTempLabel" text="38°C" textFill="#ffe182">
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="16.0" top="2.0" />
-         </padding>
-      </Label>
-      <Label fx:id="sensorNameLabel" text="Sensor Name" textFill="WHITE">
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="4.0" top="2.0" />
-         </padding>
+<HBox fx:id="sensorItemRoot" alignment="CENTER_LEFT" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" stylesheets="@../css/sensor_item_style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.treefrogapps.desktop.linux.sensor.monitor.ui.adapter.SensorListItemController">
+    <children>
+        <ProgressBar fx:id="sensorTempPercentBar" maxWidth="1.7976931348623157E308" minWidth="0.0" progress="0.74" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets bottom="2.0" left="4.0" right="2.0" top="2.0" />
+            </padding>
+        </ProgressBar>
+        <Label fx:id="currentTempLabel" styleClass="label-large" text="38°C">
+            <padding>
+                <Insets bottom="2.0" left="2.0" right="16.0" top="2.0" />
+            </padding>
          <font>
-            <Font size="10.0" />
+            <Font size="7.0" />
          </font>
-      </Label>
-      <Label fx:id="deviceNameLabel" text="Device Name" textFill="#dadada">
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="4.0" top="2.0" />
-         </padding>
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-   </children>
+        </Label>
+        <Label fx:id="sensorNameLabel" minWidth="-Infinity" prefWidth="100.0" text="Sensor Name" textFill="#b53c3c">
+            <padding>
+                <Insets bottom="2.0" left="2.0" right="4.0" top="2.0" />
+            </padding>
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="deviceNameLabel" styleClass="label-small" text="Device Name" textFill="#dadada">
+            <padding>
+                <Insets bottom="2.0" left="2.0" right="4.0" top="2.0" />
+            </padding>
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+    </children>
 </HBox>

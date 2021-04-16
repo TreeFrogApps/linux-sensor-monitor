@@ -15,7 +15,7 @@ class SensorLayoutStage @Inject constructor(
     : LayoutStage(inflater, schedulers, bundle) {
 
     init {
-        minWidth = 400.0;
+        minWidth = 460.0;
         minHeight = 230.0;
     }
 }

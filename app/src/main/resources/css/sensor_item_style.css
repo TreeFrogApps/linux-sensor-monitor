@@ -1,0 +1,46 @@
+.root {
+    -fx-background-color: transparent;
+}
+
+.progress-bar > .track {
+    -fx-background-color: #555555;
+    -fx-background-insets: 0;
+    -fx-background-radius: 3;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: orange;
+}
+
+.progress-bar-cool > .bar {
+    -fx-background-color: #306990;
+}
+
+.progress-bar-normal > .bar {
+    -fx-background-color: #589030;
+}
+
+.progress-bar-warm > .bar {
+    -fx-background-color: #906230;
+}
+
+.progress-bar-hot > .bar {
+    -fx-background-color: #a32020;
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.label-small {
+    -fx-text-fill: #DDDDDD;
+    -fx-font-size: 10px;
+}
+
+.label-large {
+    -fx-text-fill: #c7b44f;
+    -fx-font-size: 12px;
+}
+

@@ -1,6 +1,7 @@
 package com.treefrogapps.desktop.linux.sensor.monitor.data
 
 import com.treefrogapps.desktop.linux.sensor.monitor.data.SensorData.DeviceType.UNKNOWN
+import java.util.*
 import java.util.regex.Pattern
 
 
@@ -21,19 +22,22 @@ data class SensorData(val devices: List<Device> = listOf()) {
 
         companion object {
 
-            @JvmStatic private val TEMP_REGEX: Pattern by lazy { "[^0-9.0-9]+".toRegex().toPattern() }
+            @JvmStatic private val TEMP_REGEX: Pattern by lazy { "[0-9.0-9]+".toRegex().toPattern() }
 
-            @JvmStatic private fun tempToDoubleOrZero(tempValue: String): Double =
-                TEMP_REGEX.matcher(tempValue)
-                    .results()
-                    .findFirst()
-                    .map { it.group() }
-                    .map { it.toDoubleOrNull() }
-                    .orElse(0.0)!!
+            @JvmStatic private fun tempToDoubleOrZero(tempValue: String?, def: Double = 0.0): Double =
+                Optional.ofNullable(tempValue)
+                    .flatMap {
+                        TEMP_REGEX.matcher(it)
+                            .results()
+                            .findFirst()
+                            .map { it.group() }
+                            .map { it.toDoubleOrNull() }
+                    }.orElse(def)!!
 
-            @JvmStatic fun DeviceTemperature.currentToDouble(): Double = tempToDoubleOrZero(current)
-            @JvmStatic fun DeviceTemperature.highToDouble(): Double = tempToDoubleOrZero(current)
-            @JvmStatic fun DeviceTemperature.criticalToDouble(): Double = tempToDoubleOrZero(current)
+            @JvmStatic fun DeviceTemperature.currentToDouble(): Double = tempToDoubleOrZero(current, 100.0)
+            @JvmStatic fun DeviceTemperature.highToDouble(): Double = tempToDoubleOrZero(high, 100.0)
+            @JvmStatic fun DeviceTemperature.criticalToDouble(): Double = tempToDoubleOrZero(critical, 100.0)
+            @JvmStatic fun DeviceTemperature.currentMaxProgress(): Double = currentToDouble() / criticalToDouble()
         }
     }
 

@@ -7,8 +7,9 @@ import com.treefrogapps.javafx.dagger.Scopes.ControllerScope
 import io.reactivex.rxjava3.core.Flowable
 import javax.inject.Inject
 
-@ControllerScope class SensorLayoutModel @Inject constructor(private val repository: UserSettingsRepository){
+@ControllerScope class OtherSensorLayoutModel @Inject constructor(private val repository: UserSettingsRepository){
 
 
-    fun observeCpuData() : Flowable<SensorData.Device> = Flowable.empty()
+
+    fun observeSensorDate() : Flowable<List<SensorData.Device>> = Flowable.empty()
 }
