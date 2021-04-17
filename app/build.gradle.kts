@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.config.KotlinCompilerVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -5,6 +6,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm")
     id("org.jetbrains.kotlin.kapt")
     id("org.openjfx.javafxplugin") version "0.0.9"
+    id("org.beryx.jlink") version "2.23.6"
 }
 
 group = "com.treefrogapps.desktop.linux"
@@ -13,8 +15,15 @@ version = "1.0.0"
 
 val javaVersion = "11"
 val javaFxVersion = "16"
+val compileKotlin: KotlinCompile by tasks
+val compileJava: JavaCompile by tasks
+
+compileKotlin.kotlinOptions.jvmTarget = javaVersion
+compileJava.sourceCompatibility = javaVersion
+compileJava.targetCompatibility = javaVersion
 
 application {
+    mainModule.set("com.treefrogapps.desktop.linux.sensor.monitor")
     mainClass.set("com.treefrogapps.desktop.linux.sensor.monitor.SensorMonitorApp")
 }
 
@@ -25,18 +34,17 @@ javafx {
 
 kapt {
     includeCompileClasspath = false
+    javacOptions { option("--module-path", compileKotlin.classpath.asPath) }
 }
 
-val compileKotlin: KotlinCompile by tasks
-val compileJava: JavaCompile by tasks
-compileKotlin.kotlinOptions.jvmTarget = javaVersion
-compileJava.sourceCompatibility = javaVersion
-compileJava.targetCompatibility = javaVersion
-
+java {
+    modularity.inferModulePath.set(true)
+}
 
 dependencies {
     //Kotlin 
-    implementation(kotlin("stdlib", org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION))
+    implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
+    implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
 
     // TreeFrogApps Libs
     implementation("com.treefrogapps.kotlin.core:core:1.6.0")
