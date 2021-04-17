@@ -6,7 +6,6 @@ plugins {
     id("org.jetbrains.kotlin.jvm")
     id("org.jetbrains.kotlin.kapt")
     id("org.openjfx.javafxplugin") version "0.0.9"
-    id("org.beryx.jlink") version "2.23.6"
 }
 
 group = "com.treefrogapps.desktop.linux"
@@ -23,7 +22,6 @@ compileJava.sourceCompatibility = javaVersion
 compileJava.targetCompatibility = javaVersion
 
 application {
-    mainModule.set("com.treefrogapps.desktop.linux.sensor.monitor")
     mainClass.set("com.treefrogapps.desktop.linux.sensor.monitor.SensorMonitorApp")
 }
 
@@ -34,7 +32,7 @@ javafx {
 
 kapt {
     includeCompileClasspath = false
-    javacOptions { option("--module-path", compileKotlin.classpath.asPath) }
+    javacOptions { option("--module-path", compileJava.classpath.asPath) }
 }
 
 java {
