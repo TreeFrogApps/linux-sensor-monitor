@@ -13,7 +13,7 @@
                 <Insets bottom="2.0" left="4.0" right="2.0" top="2.0" />
             </padding>
         </ProgressBar>
-        <Label fx:id="currentTempLabel" styleClass="label-large" text="38°C">
+        <Label fx:id="currentTempLabel" minWidth="-Infinity" prefWidth="160.0" styleClass="label-large" text="38°C">
             <padding>
                 <Insets bottom="2.0" left="2.0" right="16.0" top="2.0" />
             </padding>
@@ -21,7 +21,7 @@
             <Font size="7.0" />
          </font>
         </Label>
-        <Label fx:id="sensorNameLabel" minWidth="-Infinity" prefWidth="100.0" text="Sensor Name" textFill="#b53c3c">
+        <Label fx:id="sensorNameLabel" minWidth="-Infinity" prefWidth="120.0" text="Sensor Name" textFill="#b53c3c">
             <padding>
                 <Insets bottom="2.0" left="2.0" right="4.0" top="2.0" />
             </padding>
@@ -29,7 +29,7 @@
                 <Font size="10.0" />
             </font>
         </Label>
-        <Label fx:id="deviceNameLabel" styleClass="label-small" text="Device Name" textFill="#dadada">
+        <Label fx:id="deviceNameLabel" minWidth="-Infinity" prefWidth="160.0" styleClass="label-small" text="Device Name" textFill="#dadada">
             <padding>
                 <Insets bottom="2.0" left="2.0" right="4.0" top="2.0" />
             </padding>

@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.Provides
 import java.util.prefs.Preferences
 
-@Module object UserSettingsModule {
+@Module object SettingsModule {
 
     @Provides
-    fun prefs(): Preferences = Preferences.userRoot().node(UserSettingsRepository::class.java.name)
+    fun prefs(): Preferences = Preferences.userRoot().node(SettingsRepository::class.java.name)
 }

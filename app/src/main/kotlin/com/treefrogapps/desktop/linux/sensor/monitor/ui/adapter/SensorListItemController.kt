@@ -49,11 +49,6 @@ class SensorListItemController : Initializable {
             currentTempTextProperty.value = currentFormatted
             sensorNameTextProperty.value = sensorName
             deviceNameTextProperty.value = deviceName
-            sensorTempPercentBar.progressProperty().bind(percentDoubleProperty)
-            sensorTempPercentBar.styleProperty().bind(percentStyleProperty)
-            currentTempLabel.textProperty().bind(currentTempTextProperty)
-            sensorNameLabel.textProperty().bind(sensorNameTextProperty)
-            deviceNameLabel.textProperty().bind(deviceNameTextProperty)
             labeled.graphic = sensorItemRoot
         }
     }

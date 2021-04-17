@@ -25,7 +25,7 @@ data class SensorListItem(
         @JvmStatic private fun DeviceTemperature.toSensorListItem(deviceName: String?) =
             SensorListItem(
                 currentMaxTempProgress = currentMaxProgress(),
-                currentFormatted = current,
+                currentFormatted = "$current / ${critical ?: high ?: "?"}",
                 currentColor = currentPercentToTempColor(currentMaxProgress()),
                 sensorName = sensor,
                 deviceName = deviceName
@@ -33,11 +33,10 @@ data class SensorListItem(
 
         private fun currentPercentToTempColor(currentPercent: Double): TempColor =
             when (currentPercent) {
-                in 0.0..40.0   -> TempColor.COOL
-                in 40.0..70.0  -> TempColor.NORMAL
-                in 70.0..85.0  -> TempColor.WARM
-                in 85.0..100.0 -> TempColor.HOT
-                else           -> TempColor.NORMAL
+                in 0.0..0.3   -> TempColor.COOL
+                in 0.3..0.7  -> TempColor.NORMAL
+                in 0.7..0.85  -> TempColor.WARM
+                else           -> TempColor.HOT
             }
     }
 }

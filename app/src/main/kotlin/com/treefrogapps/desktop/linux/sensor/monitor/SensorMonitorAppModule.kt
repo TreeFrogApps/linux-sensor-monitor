@@ -1,7 +1,6 @@
 package com.treefrogapps.desktop.linux.sensor.monitor
 
-import com.treefrogapps.desktop.linux.sensor.monitor.repository.UserSettingsModule
-import com.treefrogapps.desktop.linux.sensor.monitor.repository.UserSettingsRepository
+import com.treefrogapps.desktop.linux.sensor.monitor.repository.SettingsModule
 import com.treefrogapps.desktop.linux.sensor.monitor.resources.Resources
 import com.treefrogapps.javafx.rxjava3.JavaFXSchedulers
 import com.treefrogapps.rxjava3.Rx3Schedulers
@@ -13,7 +12,7 @@ import java.util.*
 import java.util.concurrent.Executor
 import javax.inject.Singleton
 
-@Module(includes = [UserSettingsModule::class])
+@Module(includes = [SettingsModule::class])
 object SensorMonitorAppModule {
 
     @Provides

@@ -11,6 +11,23 @@
     -fx-text-fill: white;
 }
 
+.check-box .box {
+    -fx-background-color: #666666;
+    -fx-border-color: transparent;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #4aea14;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #666666;
+}
+
+.progress-indicator:indeterminate {
+    -fx-progress-color: #4aea14;
+}
+
 .tab-pane > .tab-header-area > *.tab-header-background {
     -fx-background-color: #333333;
 }
@@ -35,6 +52,25 @@
 
 .list-view {
     -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar {
+    -fx-background-color: #3B3B3B;
+    -fx-pref-width: 12;
+    -fx-pref-height: 12;
+    -fx-padding: 2;
+}
+
+.list-view .scroll-bar > .thumb {
+    -fx-background-color: #777777;
+}
+
+.list-view .scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: gray;
+}
+
+.list-view .scroll-bar > .increment-button > .increment-arrow {
+    -fx-background-color: gray;
 }
 
 .list-cell {

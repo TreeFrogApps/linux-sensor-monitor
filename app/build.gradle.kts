@@ -23,17 +23,16 @@ javafx {
     modules = listOf("javafx.controls", "javafx.fxml")
 }
 
-val compileKotlin: KotlinCompile by tasks
-val compileJava: JavaCompile by tasks
-
-compileKotlin.kotlinOptions.jvmTarget = javaVersion
-
-compileJava.run {
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
+kapt {
+    includeCompileClasspath = false
 }
 
-kapt.includeCompileClasspath = false
+val compileKotlin: KotlinCompile by tasks
+val compileJava: JavaCompile by tasks
+compileKotlin.kotlinOptions.jvmTarget = javaVersion
+compileJava.sourceCompatibility = javaVersion
+compileJava.targetCompatibility = javaVersion
+
 
 dependencies {
     //Kotlin 
@@ -42,7 +41,7 @@ dependencies {
     // TreeFrogApps Libs
     implementation("com.treefrogapps.kotlin.core:core:1.6.0")
     implementation("com.treefrogapps.rxjava3:rxjava3:1.1.0")
-    implementation("com.treefrogapps.javafx:javafx:2.3.1")
+    implementation("com.treefrogapps.javafx:javafx:2.4.0")
 
     // Dagger
     val daggerVersion = "2.34"

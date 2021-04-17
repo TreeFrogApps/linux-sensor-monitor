@@ -3,30 +3,37 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="200.0" minWidth="460.0" prefHeight="200.0" prefWidth="460.0" stylesheets="@../css/sensor_app_style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.treefrogapps.desktop.linux.sensor.monitor.ui.controller.SensorLayoutController">
+<AnchorPane minHeight="200.0" minWidth="640.0" prefHeight="200.0" prefWidth="600.0" stylesheets="@../css/sensor_app_style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.treefrogapps.desktop.linux.sensor.monitor.ui.controller.SensorLayoutController">
     <opaqueInsets>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </opaqueInsets>
     <children>
-        <TabPane fx:id="sensorTabPane" minHeight="200.0" minWidth="460.0" prefHeight="200.0" prefWidth="460.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <TabPane fx:id="sensorTabPane" minHeight="200.0" minWidth="600.0" prefHeight="200.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
                 <Tab fx:id="cpuTab" text="Cpu">
                     <content>
                         <AnchorPane>
                             <children>
                                 <CheckBox fx:id="cpuCriticalCheckbox" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Critical Alert" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <ProgressIndicator fx:id="cpuLoadingIndicator" layoutX="354.0" layoutY="8.0" maxHeight="20.0" maxWidth="20.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="10.0" />
                                 <ListView fx:id="cpuListView" layoutX="10.0" layoutY="28.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="38.0" />
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="otherTab" text="Other">
+                <Tab text="Other">
                     <content>
-                        <AnchorPane />
+                        <AnchorPane>
+                     <children>
+                        <CheckBox fx:id="otherCriticalCheckbox" mnemonicParsing="false" text="Critical Alert" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <ProgressIndicator fx:id="otherLoadingIndicator" maxHeight="20.0" maxWidth="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <ListView fx:id="otherListView" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="38.0" />
+                     </children></AnchorPane>
                     </content>
                 </Tab>
             </tabs>

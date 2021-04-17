@@ -14,3 +14,15 @@ This is a very simple app that uses MVC pattern to visualise information by runn
 sub-processes from `sensors` and `lscpu` at configurable poll rates.
 
 At some point this might migrate to using JNI or even JNV calls directly to `lm-sensors`.
+
+---
+##Create a native application with JLink
+
+The native application created with Jlink will work with the OS that you are currently using:
+
+### Linux
+`./gradlew jlink`
+
+The result is in "build/image" (the content of the folder is needed to run the application)
+You run the application with "build/image/bin/exe_name.bat" (Windows) or "build/image/bin/exe_name" (Linux/macOS)
+You don't need a JRE to be able to run it

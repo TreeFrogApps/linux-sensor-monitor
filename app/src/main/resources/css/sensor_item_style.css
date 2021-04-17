@@ -2,6 +2,10 @@
     -fx-background-color: transparent;
 }
 
+.progress-bar {
+    -bar-color: white;
+}
+
 .progress-bar > .track {
     -fx-background-color: #555555;
     -fx-background-insets: 0;
@@ -9,23 +13,7 @@
 }
 
 .progress-bar > .bar {
-    -fx-background-color: orange;
-}
-
-.progress-bar-cool > .bar {
-    -fx-background-color: #306990;
-}
-
-.progress-bar-normal > .bar {
-    -fx-background-color: #589030;
-}
-
-.progress-bar-warm > .bar {
-    -fx-background-color: #906230;
-}
-
-.progress-bar-hot > .bar {
-    -fx-background-color: #a32020;
+    -fx-background-color: -bar-color;
 }
 
 .label {
