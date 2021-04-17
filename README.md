@@ -21,7 +21,10 @@ At some point this might migrate to using JNI or even JNV calls directly to `lm-
 The native application created with Jlink will work with the OS that you are currently using:
 
 ### Linux
-`./gradlew jlink`
+`./gradlew jlink` - Creates a modular runtime image with jlink
+`./gradlew jlinkZip` - Creates a zip of the modular runtime image
+`./gradlew jpackage` - Creates an installable image using the jpackage tool
+`./gradlew jpackageImage` - Creates an installable image using the jpackage tool
 
 The result is in "build/image" (the content of the folder is needed to run the application)
 You run the application with "build/image/bin/exe_name.bat" (Windows) or "build/image/bin/exe_name" (Linux/macOS)
