@@ -15,7 +15,8 @@ data class SensorListItem(
         COOL("-bar-color: #16b3e9;"),
         NORMAL("-bar-color: #1de26a;"),
         WARM("-bar-color: #e2ce1d;"),
-        HOT("-bar-color: #f83b07;")
+        HOT("-bar-color: #ea5F14;"),
+        CRITICAL("-bar-color: #f83b07;")
     }
 
     companion object {
@@ -34,9 +35,10 @@ data class SensorListItem(
         private fun currentPercentToTempColor(currentPercent: Double): TempColor =
             when (currentPercent) {
                 in 0.0..0.3   -> TempColor.COOL
-                in 0.3..0.7  -> TempColor.NORMAL
+                in 0.3..0.7   -> TempColor.NORMAL
                 in 0.7..0.85  -> TempColor.WARM
-                else           -> TempColor.HOT
+                in 0.85..0.95 -> TempColor.HOT
+                else          -> TempColor.CRITICAL
             }
     }
 }

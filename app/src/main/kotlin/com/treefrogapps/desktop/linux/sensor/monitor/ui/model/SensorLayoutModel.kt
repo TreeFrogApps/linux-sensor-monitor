@@ -13,20 +13,19 @@ import javax.inject.Inject
 
 @ControllerScope class SensorLayoutModel @Inject constructor(private val repository: SettingsRepository) {
 
+    fun updateCpuPollRate(periodSeconds: Int) = repository.setSetting(CPU_UPDATE_INTERVAL_KEY, periodSeconds)
 
-    fun updateCpuPollRate(periodSeconds: Int) {
-
-    }
+    fun cpuPollData(): SensorPollRateData = SensorPollRateData(current = repository.getSetting(CPU_UPDATE_INTERVAL_KEY))
 
     fun observeCpuData(): Flowable<SensorData.Device> =
         sensorFlowable(CPU_UPDATE_INTERVAL_KEY)
             .filter { ds -> ds.devices.map { it.type }.contains(CPU) }
             .map { ds -> ds.devices.first { it.type == CPU } }
 
+    fun updateOtherPollRate(periodSeconds: Int) = repository.setSetting(OTHER_UPDATE_INTERVAL_KEY, periodSeconds)
 
-    fun updateOtherPollRate(periodSeconds: Int) {
-
-    }
+    fun otherPollData(): SensorPollRateData =
+        SensorPollRateData(current = repository.getSetting(OTHER_UPDATE_INTERVAL_KEY))
 
     fun observeSensorData(): Flowable<List<SensorData.Device>> =
         sensorFlowable(OTHER_UPDATE_INTERVAL_KEY)
@@ -35,9 +34,9 @@ import javax.inject.Inject
     private fun sensorFlowable(periodRateKey: String): Flowable<SensorData> =
         repository.observeIntSetting(periodRateKey)
             .map(Int::toLong)
-            .distinctUntilChanged().switchMap { periodRate ->
+            .distinctUntilChanged()
+            .switchMap { periodRate ->
                 Flowable.interval(0, periodRate, SECONDS)
                     .flatMap { Flowable.fromCallable { SensorDataFactory().get() } }
             }
-
 }

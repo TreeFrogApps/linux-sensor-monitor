@@ -6,6 +6,9 @@
     -fx-pref-height: 200px;
 }
 
+.label {
+    -fx-text-fill: white;
+}
 .check-box {
     -fx-font-size: 12px;
     -fx-text-fill: white;
@@ -28,13 +31,16 @@
     -fx-progress-color: #4aea14;
 }
 
+.progress-indicator:indeterminate .spinner {
+    -fx-background-color: transparent;
+}
+
 .tab-pane > .tab-header-area > *.tab-header-background {
     -fx-background-color: #333333;
 }
 
 .tab {
     -fx-background-color: #333333;
-    -fx-text-fill: #FFFFFF;
 }
 
 .tab:selected {
@@ -77,3 +83,22 @@
     -fx-background-color: transparent;
 }
 
+.spinner {
+    -fx-background-color: #666666;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: #333333;
+}
+
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow {
+    -fx-background-color: #999999;
+}
+
+.spinner .text-field:readonly {
+    -fx-text-alignment: center;
+    -fx-text-fill: #4aea14;
+    -fx-background-color: #666666;
+}
