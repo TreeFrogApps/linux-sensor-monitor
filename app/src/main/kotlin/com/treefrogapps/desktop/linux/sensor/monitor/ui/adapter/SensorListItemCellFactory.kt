@@ -2,6 +2,7 @@ package com.treefrogapps.desktop.linux.sensor.monitor.ui.adapter
 
 import com.treefrogapps.javafx.LayoutInflater
 import com.treefrogapps.javafx.dagger.Scopes.ControllerScope
+import com.treefrogapps.kotlin.core.extensions.orElse
 import javafx.scene.control.ListCell
 import javafx.scene.control.ListView
 import javafx.scene.layout.HBox
@@ -16,6 +17,7 @@ import javax.inject.Inject
     override fun call(param: ListView<SensorListItem>?): SensorListItemCell = SensorListItemCell(controller())
 
     private fun controller(): SensorListItemController =
-        inflater.inflate<SensorListItemController, HBox>("sensor_item_layout", controllerFactory)
-            ?: throw IllegalStateException("Unable to create controller")
+        SensorListItemCellFactory::class.java.getResource("/fxml/sensor_item_layout.fxml")
+            ?.run { inflater.inflate<SensorListItemController, HBox>(this, controllerFactory) }
+            .orElse { throw IllegalStateException("Unable to create controller") }
 }

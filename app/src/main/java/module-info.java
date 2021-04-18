@@ -1,6 +1,6 @@
 module com.treefrogapps.desktop.linux.sensor.monitor {
 
-    // Require JavaFX
+    // Required by this module (its dependencies)
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx;
@@ -14,8 +14,12 @@ module com.treefrogapps.desktop.linux.sensor.monitor {
     requires java.prefs;
     requires core;
 
+    // Add "opens" with "opens xxx.xxx.xxx (optional : to javafx.fxml)  if "@FXML" is used in this module
+    // For some reason I need to specify each sub package location where controllers are ... ¯\_(ツ)_/¯
+    opens com.treefrogapps.desktop.linux.sensor.monitor.ui.controller;
+    opens com.treefrogapps.desktop.linux.sensor.monitor.ui.adapter;
     // Export package (needed by JavaFX to start the Application)
-    // Replace "exports" with "opens" if "@FXML" is used in this module
     exports com.treefrogapps.desktop.linux.sensor.monitor;
+    // needs this explicitly for some reason ... ¯\_(ツ)_/¯
     exports com.treefrogapps.desktop.linux.sensor.monitor.repository;
 }

@@ -33,6 +33,7 @@ import javax.inject.Inject
     private val cpuPollRateListener: ChangeListener<Int> = ChangeListener { _, _, rate -> model.updateCpuPollRate(rate) }
     private val otherLoadingListener: ListChangeListener<SensorListItem> = ListChangeListener { otherLoadingIndicator.isVisible = it.list.isEmpty() }
     private val otherPollRateListener: ChangeListener<Int> = ChangeListener { _, _, rate -> model.updateOtherPollRate(rate) }
+
     @field:FXML private lateinit var sensorTabPane: TabPane
 
     // CPU Tab

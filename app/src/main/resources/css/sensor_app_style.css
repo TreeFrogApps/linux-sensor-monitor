@@ -71,10 +71,12 @@
     -fx-background-color: #777777;
 }
 
-.list-view .scroll-bar > .decrement-button > .decrement-arrow {
-    -fx-background-color: gray;
+.list-view .scroll-bar > .decrement-button,
+.list-view .scroll-bar > .increment-button {
+    -fx-background-color: transparent;
 }
 
+.list-view .scroll-bar > .decrement-button > .decrement-arrow,
 .list-view .scroll-bar > .increment-button > .increment-arrow {
     -fx-background-color: gray;
 }
