@@ -47,6 +47,14 @@ jlink {
     with(project) { imageZip.set(file("${buildDir}/image-zip/${extra["name"]}.zip")) }
 }
 
+// NOTE : Ubuntu 20.04 bug with libjvm.so being bloated (430mb) use :  strip -p --strip-unneeded image/lib/server/libjvm.so
+tasks {
+    register<Task>("jlinkStripped").configure {
+        dependsOn("jlink")
+        doLast { project.exec { commandLine(listOf("strip", "-p", "--strip-unneeded", "${project.buildDir}/image/lib/server/libjvm.so")) } }
+    }
+}
+
 dependencies {
     //Kotlin 
     implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
