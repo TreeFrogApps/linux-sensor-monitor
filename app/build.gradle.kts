@@ -6,6 +6,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm")
     id("org.jetbrains.kotlin.kapt")
     id("org.openjfx.javafxplugin") version "0.0.9"
+    id("org.beryx.jlink") version "2.23.6"
 }
 
 group = "com.treefrogapps.desktop.linux"
@@ -38,6 +39,12 @@ kapt {
 
 java {
     modularity.inferModulePath.set(true)
+}
+
+jlink {
+    launcher { name = "sensor-monitor" }
+    options.set(listOf("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages"))
+    with(project) { imageZip.set(file("${buildDir}/image-zip/${extra["name"]}.zip")) }
 }
 
 dependencies {
