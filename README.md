@@ -23,6 +23,8 @@ The native application created with Jlink will work with the OS that you are cur
 ### Linux
 `./gradlew jlink` - Creates a modular runtime image with jlink
 
+`./gradlew jlinkStripped` - Creates a modular runtime image with jlink (bugfix task to strip unneeded symbols from `libjvm.so`)
+
 `./gradlew jlinkZip` - Creates a zip of the modular runtime image
 
 The result is in "build/image" (the content of the folder is needed to run the application)
