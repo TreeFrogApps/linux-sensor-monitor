@@ -16,7 +16,7 @@ sub-processes from `sensors` and `lscpu` at configurable poll rates.
 At some point this might migrate to using JNI or even JNV calls directly to `lm-sensors`.
 
 ---
-##Create a native application with JLink
+## Create a native application with JLink
 
 The native application created with Jlink will work with the OS that you are currently using:
 
