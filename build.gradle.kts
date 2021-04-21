@@ -6,6 +6,7 @@ allprojects {
     repositories {
         mavenCentral()
         jcenter()
+        mavenLocal()
         maven {
             name = "GitHubPackages"
             url = uri(project.findProperty("gpr_url_java_libs") as String)

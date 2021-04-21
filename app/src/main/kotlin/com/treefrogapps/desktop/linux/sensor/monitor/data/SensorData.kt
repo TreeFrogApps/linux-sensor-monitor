@@ -37,8 +37,8 @@ data class SensorData(val devices: List<Device> = listOf()) {
 
             @JvmStatic fun DeviceTemperature.currentToDouble(): Double = tempToDoubleOrNull(current).orElse { 100.0 }
             @JvmStatic fun DeviceTemperature.highToDouble(): Double = tempToDoubleOrNull(high).orElse { 100.0 }
-            @JvmStatic fun DeviceTemperature.criticalToDouble(): Double? = tempToDoubleOrNull(critical)
-            @JvmStatic fun DeviceTemperature.currentMaxProgress(): Double = currentToDouble() / criticalToDouble().orElse { highToDouble() }
+            @JvmStatic fun DeviceTemperature.criticalToDouble(): Double = tempToDoubleOrNull(critical).orElse { highToDouble() }
+            @JvmStatic fun DeviceTemperature.currentMaxProgress(): Double = currentToDouble() / criticalToDouble()
         }
     }
 

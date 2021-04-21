@@ -1,23 +1,11 @@
 package com.treefrogapps.desktop.linux.sensor.monitor.data
 
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.util.function.Supplier
+import java.util.function.Function
+import javax.inject.Inject
 
-class SensorDataFactory : Supplier<SensorData> {
+class SensorDataFactory @Inject constructor(private val dataConverter: Function<String, SensorData>) : CommandDataFactory<SensorData>() {
 
-    companion object {
-        @JvmStatic
-        private val LINE_SEPARATOR: String by lazy { System.getProperty("line.separator") }
+    override fun command(): String = "sensors"
 
-        @JvmStatic
-        private fun String.toSensorData(): SensorData = SensorDataParser().apply(this)
-    }
-
-    override fun get(): SensorData =
-        Runtime.getRuntime().exec("sensors").run {
-            BufferedReader(InputStreamReader(inputStream))
-                .lineSequence()
-                .joinToString(separator = LINE_SEPARATOR)
-        }.toSensorData()
+    override fun adapt(output: String): SensorData = dataConverter.apply(output)
 }

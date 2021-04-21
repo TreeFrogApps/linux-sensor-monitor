@@ -9,23 +9,40 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane minHeight="200.0" minWidth="640.0" prefHeight="200.0" prefWidth="600.0" stylesheets="@../css/sensor_app_style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.treefrogapps.desktop.linux.sensor.monitor.ui.controller.SensorLayoutController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="600.0" stylesheets="@../css/sensor_app_style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.treefrogapps.desktop.linux.sensor.monitor.ui.controller.SensorLayoutController">
     <opaqueInsets>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </opaqueInsets>
     <children>
-        <TabPane fx:id="sensorTabPane" minHeight="200.0" minWidth="600.0" prefHeight="200.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <TabPane fx:id="sensorTabPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
                 <Tab fx:id="cpuTab" text="Cpu">
                     <content>
                         <AnchorPane>
                             <children>
-                                <CheckBox fx:id="cpuCriticalCheckbox" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Critical Alert" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
-                        <ProgressIndicator fx:id="cpuLoadingIndicator" layoutX="354.0" layoutY="8.0" maxHeight="20.0" maxWidth="20.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="10.0" />
-                                <ListView fx:id="cpuListView" layoutX="10.0" layoutY="28.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="42.0" />
-                        <Spinner fx:id="cpuPollRateSpinner" layoutX="137.0" layoutY="6.0" maxWidth="60.0" minWidth="60.0" AnchorPane.leftAnchor="134.0" AnchorPane.topAnchor="10.0" />
-                        <Label layoutX="204.0" layoutY="12.0" text="Poll rate seconds" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="14.0" />
+                                <CheckBox fx:id="cpuCriticalCheckbox" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Critical Alert" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <ProgressIndicator fx:id="cpuLoadingIndicator" layoutX="354.0" layoutY="8.0" maxHeight="20.0" maxWidth="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="8.0" />
+                                <ListView fx:id="cpuListView" layoutX="10.0" layoutY="28.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="86.0" />
+                        <Spinner fx:id="cpuPollRateSpinner" layoutX="137.0" layoutY="6.0" maxWidth="60.0" minWidth="60.0" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="8.0" />
+                        <Label layoutX="204.0" layoutY="12.0" text="Poll rate seconds" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="12.0" />
+                        <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="34.0" maxHeight="-Infinity" prefHeight="32.0" prefWidth="200.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="44.0">
+                           <children>
+                              <Label fx:id="cpuName" alignment="CENTER" contentDisplay="TOP" maxWidth="480.0" styleClass="label-big" />
+                              <Label fx:id="cpuFrequencies" alignment="CENTER_RIGHT" contentDisplay="TOP" maxWidth="1.7976931348623157E308" styleClass="label-big" textAlignment="RIGHT" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets left="16.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="4.0" left="6.0" right="4.0" top="6.0" />
+                           </padding>
+                        </HBox>
                             </children>
                         </AnchorPane>
                     </content>
@@ -34,11 +51,11 @@
                     <content>
                         <AnchorPane>
                      <children>
-                        <CheckBox fx:id="otherCriticalCheckbox" mnemonicParsing="false" text="Critical Alert" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
+                        <CheckBox fx:id="otherCriticalCheckbox" mnemonicParsing="false" text="Critical Alert" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
                         <ProgressIndicator fx:id="otherLoadingIndicator" maxHeight="20.0" maxWidth="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                        <ListView fx:id="otherListView" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="42.0" />
-                        <Spinner fx:id="otherPollRateSpinner" maxWidth="60.0" minWidth="60.0" AnchorPane.leftAnchor="134.0" AnchorPane.topAnchor="10.0" />
-                        <Label text="Poll rate seconds" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="14.0" />
+                        <ListView fx:id="otherListView" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="48.0" />
+                        <Spinner fx:id="otherPollRateSpinner" maxWidth="60.0" minWidth="60.0" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="8.0" />
+                        <Label text="Poll rate seconds" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="12.0" />
                      </children></AnchorPane>
                     </content>
                 </Tab>

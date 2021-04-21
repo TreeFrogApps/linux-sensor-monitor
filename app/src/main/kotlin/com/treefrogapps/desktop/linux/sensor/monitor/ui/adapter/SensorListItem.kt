@@ -12,11 +12,11 @@ data class SensorListItem(
     val deviceName: String? = null) {
 
     enum class TempColor(val value: String) {
-        COOL("-bar-color: #16b3e9;"),
-        NORMAL("-bar-color: #1de26a;"),
-        WARM("-bar-color: #e2ce1d;"),
-        HOT("-bar-color: #ea5F14;"),
-        CRITICAL("-bar-color: #f83b07;")
+        COOL("#16b3e9"),
+        NORMAL("#1de26a"),
+        WARM("#e2ce1d"),
+        HOT("#ea5F14"),
+        CRITICAL("#f83b07")
     }
 
     companion object {

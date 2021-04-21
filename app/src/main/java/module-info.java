@@ -3,6 +3,7 @@ module com.treefrogapps.desktop.linux.sensor.monitor {
     // Required by this module (its dependencies)
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
     requires javafx;
     requires rxjava3;
     requires kotlin.stdlib;

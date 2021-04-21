@@ -29,7 +29,7 @@ application {
 
 javafx {
     version = javaFxVersion
-    modules = listOf("javafx.controls", "javafx.fxml")
+    modules = listOf("javafx.controls", "javafx.fxml", "javafx.media")
 }
 
 kapt {
@@ -63,7 +63,7 @@ dependencies {
     // TreeFrogApps Libs
     implementation("com.treefrogapps.kotlin.core:core:1.6.0")
     implementation("com.treefrogapps.rxjava3:rxjava3:1.1.0")
-    implementation("com.treefrogapps.javafx:javafx:2.5.1")
+    implementation("com.treefrogapps.javafx:javafx:2.7.0")
 
     // Dagger
     val daggerVersion = "2.34"

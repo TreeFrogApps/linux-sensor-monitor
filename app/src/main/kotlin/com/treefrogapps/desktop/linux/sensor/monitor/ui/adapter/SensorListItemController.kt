@@ -16,10 +16,10 @@ import java.net.URL
 import java.util.*
 import javax.inject.Inject
 
-class SensorListItemController : Initializable {
+class SensorListItemController(private val resources: SensorListItemResources) : Initializable {
 
-    @ControllerScope class Factory @Inject constructor() : Callback<Class<SensorListItemController>, SensorListItemController> {
-        override fun call(param: Class<SensorListItemController>?): SensorListItemController = SensorListItemController()
+    @ControllerScope class Factory @Inject constructor(private val resources: SensorListItemResources) : Callback<Class<SensorListItemController>, SensorListItemController> {
+        override fun call(param: Class<SensorListItemController>?): SensorListItemController = SensorListItemController(resources)
     }
 
     @field:FXML private lateinit var sensorItemRoot: HBox
@@ -31,12 +31,14 @@ class SensorListItemController : Initializable {
     private val percentDoubleProperty: DoubleProperty = SimpleDoubleProperty(0.0)
     private val percentStyleProperty: StringProperty = SimpleStringProperty("")
     private val currentTempTextProperty: StringProperty = SimpleStringProperty("")
+    private val currentTempTextStyleProperty: StringProperty = SimpleStringProperty("")
     private val sensorNameTextProperty: StringProperty = SimpleStringProperty("")
     private val deviceNameTextProperty: StringProperty = SimpleStringProperty("")
 
     override fun initialize(location: URL?, resources: ResourceBundle?) {
         sensorTempPercentBar.progressProperty().bind(percentDoubleProperty)
         sensorTempPercentBar.styleProperty().bind(percentStyleProperty)
+        currentTempLabel.styleProperty().bind(currentTempTextStyleProperty)
         currentTempLabel.textProperty().bind(currentTempTextProperty)
         sensorNameLabel.textProperty().bind(sensorNameTextProperty)
         deviceNameLabel.textProperty().bind(deviceNameTextProperty)
@@ -45,7 +47,8 @@ class SensorListItemController : Initializable {
     fun bind(labeled: Labeled, item: SensorListItem) {
         with(item) {
             percentDoubleProperty.value = currentMaxTempProgress
-            percentStyleProperty.value = currentColor.value
+            percentStyleProperty.value = resources.barStyle(currentColor)
+            currentTempTextStyleProperty.value = resources.textStyle(currentColor)
             currentTempTextProperty.value = currentFormatted
             sensorNameTextProperty.value = sensorName
             deviceNameTextProperty.value = deviceName
@@ -57,6 +60,7 @@ class SensorListItemController : Initializable {
         percentDoubleProperty.value = 0.0
         percentStyleProperty.value = ""
         currentTempTextProperty.value = ""
+        currentTempTextStyleProperty.value = ""
         sensorNameTextProperty.value = ""
         deviceNameTextProperty.value = ""
         labeled.graphic = null

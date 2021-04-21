@@ -104,3 +104,13 @@
     -fx-text-fill: #4aea14;
     -fx-background-color: #666666;
 }
+
+.label-big {
+    -fx-text-fill: #e7c701;
+    -fx-font-size: 14px;
+}
+
+HBox {
+    -fx-background-color: #404040;
+    -fx-background-radius: 4;
+}

@@ -7,8 +7,9 @@ import java.util.function.Function
 import java.util.regex.MatchResult
 import java.util.regex.Pattern
 import java.util.stream.Collectors
+import javax.inject.Inject
 
-class SensorDataParser : Function<String, SensorData> {
+class SensorDataParser @Inject constructor() : Function<String, SensorData> {
 
     companion object {
         @JvmStatic
