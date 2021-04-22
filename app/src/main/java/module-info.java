@@ -1,6 +1,7 @@
 module com.treefrogapps.desktop.linux.sensor.monitor {
 
     // Required by this module (its dependencies)
+    requires javafx;
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;

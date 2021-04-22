@@ -19,19 +19,21 @@ import javax.inject.Inject
     private val cpuFrequencyDataFactory: CommandDataFactory<CpuFrequencyData>,
     private val alertPlayer: AlertPlayer) {
 
+    companion object {
+        private const val REPLAY_BUFFER = 1
+    }
+
     private val cpuDataObservable: Flowable<SensorData.Device> by lazy {
         sensorFlowable(CPU_UPDATE_INTERVAL_KEY)
             .filter { ds -> ds.devices.map { it.type }.contains(CPU) }
             .map { ds -> ds.devices.first { it.type == CPU } }
-            .publish()
-            .autoConnect()
+            .share(REPLAY_BUFFER)
     }
 
     private val sensorDataObservable: Flowable<List<SensorData.Device>> by lazy {
         sensorFlowable(OTHER_UPDATE_INTERVAL_KEY)
             .map { ds -> ds.devices.filter { it.type != CPU } }
-            .publish()
-            .autoConnect()
+            .share(REPLAY_BUFFER)
     }
 
     fun updateCpuPollRate(periodSeconds: Int) = repository.setSetting(CPU_UPDATE_INTERVAL_KEY, periodSeconds)
@@ -41,7 +43,7 @@ import javax.inject.Inject
     fun observeCpuData(): Flowable<SensorData.Device> = cpuDataObservable
 
     fun observeCpuFrequencyData(): Flowable<CpuFrequencyData> =
-        dataFlowable(CPU_UPDATE_INTERVAL_KEY, Flowable.fromCallable { cpuFrequencyDataFactory.get() })
+        dataFlowable(CPU_UPDATE_INTERVAL_KEY, Flowable.fromCallable(cpuFrequencyDataFactory::get))
 
     fun updateOtherPollRate(periodSeconds: Int) = repository.setSetting(OTHER_UPDATE_INTERVAL_KEY, periodSeconds)
 
@@ -60,4 +62,6 @@ import javax.inject.Inject
             .map(Int::toLong)
             .distinctUntilChanged()
             .switchMap { periodRate -> Flowable.interval(0, periodRate, SECONDS).flatMap { dataFlowable } }
+
+    private fun <T> Flowable<T>.share(buffer : Int) : Flowable<T> = publish(buffer).refCount()
 }
