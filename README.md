@@ -8,6 +8,9 @@
 - Ability to set audio warning when sensor temps go ver critical temp - if not known 100°C used
 - Ability to shut down when average core temp exceeds max temp
 
+![Alt text](/screenshot/linux-sensor-monitor-screenshot.gif?raw=true "Example App Running")
+
+
 ##### Notes
 
 This is a very simple app that uses MVC pattern to visualise information by running
@@ -30,3 +33,4 @@ The native application created with Jlink will work with the OS that you are cur
 The result is in "build/image" (the content of the folder is needed to run the application)
 You run the application with "build/image/bin/exe_name.bat" (Windows) or "build/image/bin/exe_name" (Linux/macOS)
 You don't need a JRE to be able to run it
+
