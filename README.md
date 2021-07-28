@@ -6,7 +6,6 @@
 - Includes cpu frequency (current/min/max)
 - Ability to adjust sensor poll rate
 - Ability to set audio warning when sensor temps go ver critical temp - if not known 100°C used
-- Ability to shut down when average core temp exceeds max temp
 
 ![Alt text](/screenshot/linux-sensor-monitor-screenshot.gif?raw=true "Example App Running")
 

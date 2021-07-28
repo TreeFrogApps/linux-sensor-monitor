@@ -5,8 +5,8 @@ plugins {
     application
     id("org.jetbrains.kotlin.jvm")
     id("org.jetbrains.kotlin.kapt")
-    id("org.openjfx.javafxplugin") version "0.0.9"
-    id("org.beryx.jlink") version "2.23.6"
+    id("org.openjfx.javafxplugin") version "0.0.10"
+    id("org.beryx.jlink") version "2.24.1"
 }
 
 group = "com.treefrogapps.desktop.linux"
@@ -19,6 +19,7 @@ val compileKotlin: KotlinCompile by tasks
 val compileJava: JavaCompile by tasks
 
 compileKotlin.kotlinOptions.jvmTarget = javaVersion
+compileKotlin.kotlinOptions.useOldBackend = true
 compileJava.sourceCompatibility = javaVersion
 compileJava.targetCompatibility = javaVersion
 
@@ -66,7 +67,7 @@ dependencies {
     implementation("com.treefrogapps.javafx:javafx:2.7.0")
 
     // Dagger
-    val daggerVersion = "2.34"
+    val daggerVersion = "2.38.1"
     implementation("com.google.dagger:dagger:$daggerVersion")
     kapt("com.google.dagger:dagger-compiler:$daggerVersion")
 

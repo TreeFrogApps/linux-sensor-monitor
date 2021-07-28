@@ -1,11 +1,11 @@
 plugins {
-    kotlin("jvm") version "1.4.32" apply false
+    kotlin("jvm") version "1.5.21" apply false
 }
 
 allprojects {
     repositories {
         mavenCentral()
-        jcenter()
+        google()
         mavenLocal()
         maven {
             name = "GitHubPackages"
